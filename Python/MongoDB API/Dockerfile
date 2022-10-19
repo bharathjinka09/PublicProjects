@@ -3,8 +3,8 @@ FROM alpine
 
 
 # # Step 2 tell what you want to do
-
-RUN apk add --no-cache python3-dev && pip3 install --upgrade pip
+RUN apk add --update py-pip
+RUN apk add --no-cache python3-dev && pip install --upgrade pip
 
 # # Step 3 Configure a software
 # # Defining working directory
@@ -13,7 +13,7 @@ WORKDIR /app
 # # Copy everything which is present in my docker directory to working (/app)
 COPY /requirements.txt /app
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY ["MongoDB API.py", "/app"]
 
